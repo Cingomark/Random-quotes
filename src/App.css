@@ -1,0 +1,78 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  background-color: white;
+  width: 30vw;
+  min-height: 27vh;
+  min-width: 250px;
+  border-radius: 5px;
+}
+blockquote {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 0;
+  font-size: max(13px, calc((2.5vh + 1.5vw) / 2));
+  font-weight: bold;
+}
+.author {
+  display: flex;
+  text-align: right;
+  justify-content: end;
+  font-size: max(10px, calc((2.5vh + 1.5vw) / 3));
+}
+.quoteSection {
+  padding: 2vw 2.5vw;
+}
+button {
+  height: 35px;
+}
+.container:nth-child(2) {
+  display: flex;
+  justify-content: end;
+}
+.buttonSection {
+  display: flex;
+  width: 100%;
+  height: 75px;
+  align-items: end;
+}
+@keyframes colorTransition {
+  0% {
+    color: var(--prev-color);
+    background-color: var(--prev-color);
+  }
+  100% {
+    color: var(--new-color);
+    background-color: var(--new-color);
+  }
+}
+@keyframes buttonColorTransition {
+  0% {
+    background-color: var(--prev-color);
+  }
+  100% {
+    background-color: var(--new-color);
+  }
+}
+@keyframes vanishText {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes showText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
