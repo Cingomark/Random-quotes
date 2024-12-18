@@ -28,14 +28,17 @@ class App extends React.Component {
 
   getRandomQuote = async () => {
     try {
-      const res = await fetch("https://api.quotable.io/random");
+      //prettier-ignore
+      const res = await fetch("https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json");
       const data = await res.json();
+      const randomNum = Math.floor(Math.random() * (data.quotes.length - 1));
       this.setState(
         {
-          currentQuoteHold: data,
+          currentQuoteHold: data.quotes[randomNum],
           fadeOut: true,
         },
         () => {
+          console.log(data.quotes[1]);
           this.changeColors();
         }
       );
@@ -57,10 +60,7 @@ class App extends React.Component {
 
   makeTwitterLink() {
     const base = "https://twitter.com/intent/tweet?text=";
-    const formattedQuote = this.state.currentQuote.content.replaceAll(
-      " ",
-      "%20"
-    );
+    const formattedQuote = this.state.currentQuote.quote.replaceAll(" ", "%20");
     this.setState({
       twitterLink:
         base + '"' + formattedQuote + '" ~~ ' + this.state.currentQuote.author,
@@ -153,7 +153,7 @@ class RenderQuote extends React.Component {
         <blockquote>
           <em id="text">
             <Icon.Quote size={20} />
-            {this.props.quote.content}
+            {this.props.quote.quote}
           </em>
         </blockquote>
         <p id="author" className="author">
